@@ -30,5 +30,7 @@ while guess != secret and tries < 6:
 if guess == secret:
     print "Avast! Ye got it! Found my secret , ye did!"
 else:
-    print "No more guesses! Better 1uck next time , matey!"
+    print "No more guesses! Better luck next time , matey!"
     print "The secret number was", secret
+
+print "This is game!"

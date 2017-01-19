@@ -3,6 +3,7 @@
 
 import pygame
 import sys
+import random
 
 
 # 定义MyBallClass对象
@@ -27,11 +28,12 @@ class MyBallClass(pygame.sprite.Sprite):
 
         # Ball位于左右边界时反弹
         if self.rect.left <= 0 or self.rect.right >= screen.get_width():
-            self.speed[0] = -self.speed[0]
+            # 加入反弹随机速度
+            self.speed[0] = -self.speed[0] + random.randint(-3, 3)
 
         # Ball位于顶部边界时反弹，并计分
         if self.rect.top <= 0:
-            self.speed[1] = -self.speed[1]
+            self.speed[1] = -self.speed[1] + random.randint(-3, 3)
             points += 1
             score_text = font.render(str(points), 1, (0, 0, 0))
 
@@ -82,7 +84,16 @@ while True:
             paddle.rect.centerx = event.pos[0]
     # 碰撞检测，Y坐标反向
     if pygame.sprite.spritecollide(paddle, ballGroup, False):
-        myBall.speed[1] = -myBall.speed[1]
+        myBall.speed[1] = -myBall.speed[1] + random.randint(-3, 3)
+
+    # 控制球速
+    if 0 < myBall.speed[0] < 3: myBall.speed[0] = 3
+    if -3 < myBall.speed[0] <= 0: myBall.speed[0] = -3
+    if myBall.speed[0] > 15:  myBall.speed[0] = 15
+    if 0 < myBall.speed[1] < 3: myBall.speed[1] = 3
+    if -3 < myBall.speed[1] <= 0: myBall.speed[1] = -3
+    if myBall.speed[1] > 15:  myBall.speed[1] = 15
+
     # 移动球
     myBall.move()
 
@@ -109,11 +120,10 @@ while True:
             ft1_surf = font.render(final_text1, 1, (50, 50, 50))
             ft2_font = pygame.font.Font(None, 50)
             ft2_surf = font.render(final_text2, 1, (50, 50, 50))
-            screen.blit(ft1_surf, [screen.get_width()/2 - ft1_surf.get_width()/2, 100])
-            screen.blit(ft2_surf, [screen.get_width()/2 - ft2_surf.get_width()/2, 200])
+            screen.blit(ft1_surf, [screen.get_width() / 2 - ft1_surf.get_width() / 2, 100])
+            screen.blit(ft2_surf, [screen.get_width() / 2 - ft2_surf.get_width() / 2, 200])
             pygame.display.flip()
             done = True
         else:
             pygame.time.delay(2000)
             myBall.rect.topleft = [50, 50]
-

@@ -1,8 +1,15 @@
 # -*- coding:UTF-8 -*-
 # /usr/bin/python
 
-import requests, re, json, time, os, os.path
 import traceback
+
+import json
+import os
+import os.path
+import re
+import requests
+
+from TEST import time
 
 # 模拟知乎登陆，主要是获取验证码登陆
 _zhihu_url = 'https://www.zhihu.com'
@@ -72,7 +79,6 @@ class ZhiHu():
         else:
             print('登陆出现问题。。。。')
 
-    import pickle, json
     def save_cookies(self):
         global _session, path_for
         with open('./' + "cookiefile", 'w')as f:

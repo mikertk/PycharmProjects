@@ -16,7 +16,10 @@ splat.play()
 pygame.mixer.music.load("周杰伦 - 床边故事.flac")
 pygame.mixer.music.play()
 
-while True:
+running = True
+while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            sys.exit()
+            running = False
+pygame.quit()
+

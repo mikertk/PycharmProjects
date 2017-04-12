@@ -11,10 +11,13 @@ screen = pygame.display.set_mode([640, 480])
 pygame.time.delay(1000)
 
 splat = pygame.mixer.Sound("splat.wav")
+splat.set_volume(0.9)
 splat.play()
 
 pygame.mixer.music.load("周杰伦 - 床边故事.flac")
+pygame.mixer.music.set_volume(0.40)
 pygame.mixer.music.play()
+
 
 running = True
 while running:

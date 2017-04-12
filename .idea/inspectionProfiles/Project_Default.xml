@@ -1,6 +1,7 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="JsonStandardCompliance" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="ignoredErrors">
         <list>
@@ -13,6 +14,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="pygame.image.load" />
+          <option value="my_crawler.my_crawler.spiders.myCrawler.*" />
         </list>
       </option>
     </inspection_tool>
